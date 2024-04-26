@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:pt="jakarta.faces.passthrough"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:of="http://omnifaces.org/functions">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <title>Bucherfassung</title>
+</h:head>
+<body>
+<f:view>
+    <h:form>
+        <h:panelGrid columns="2">
+
+            <h:outputText value="Autor"/>
+            <h:inputText value="#{book.author}"/>
+
+            <h:outputText value="Titel"/>
+            <h:inputText value="#{book.name}"/>
+
+            <h:outputText value="Erscheinungsdatum"/>
+            <h:inputText value="#{book.publishDate}"/>
+
+            <h:outputText value="Sprache"/>
+            <h:selectOneListbox value="#{book.language}">
+                <f:selectItems value="#{book.languages}"></f:selectItems>
+                <f:valueChangeListener
+                        type="de.jsfkurs.buchverwaltung.jsfbeans.LanguageValueChangeListener"></f:valueChangeListener>
+            </h:selectOneListbox>
+
+            <h:outputText value="Preis"/>
+            <h:inputText value="#{book.price}"/>
+
+            <h:outputText value="Abteilungen, die benachrichtigt werden"/>
+            <h:selectManyListbox value="#{book.emailAddresses}" valueChangeListener="#{book.emailAddressChanged}">
+                <f:selectItem itemValue="abteilung1@mycompany.de" itemLabel="Abteilung 1"/>
+                <f:selectItem itemValue="abteilung2@mycompany.de" itemLabel="Abteilung 2"/>
+                <f:ajax event="valueChange" listener="#{book.emailAddressChangedAjax}" render="sm"></f:ajax>
+            </h:selectManyListbox>
+
+        </h:panelGrid>
+
+        <h:outputText value="#{book.specialMessage}" id="sm"/> <br/>
+
+        <h:commandButton value="Abspeichern" action="#{book.save}" actionListener="#{book.saveListener}"/>
+    </h:form>
+</f:view>
+</body>
+</html>
