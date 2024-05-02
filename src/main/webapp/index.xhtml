@@ -9,47 +9,49 @@
       xmlns:o="http://omnifaces.org/ui"
       xmlns:of="http://omnifaces.org/functions">
 
-<h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-    <title>Bucherfassung</title>
-</h:head>
-<body>
-<f:view>
-    <h:form>
-        <h:panelGrid columns="2">
+<ui:composition template="/WEB-INF/templates/standarttemplate.xhtml">
 
-            <h:outputText value="Autor"/>
-            <h:inputText value="#{book.author}"/>
+    <ui:define name="pagetitle">Buchliste</ui:define>
+    <ui:define name="content">
+        <f:view>
+            <h:dataTable value="#{bookShelf.books}" var="onebook" styleClass="bookTable" headerClass="bookHeader"
+                         rowClasses="bookTableOddRow,bookTableEvenRow">
+                <h:column>
+                    <f:facet name="header">No.</f:facet>
+                    #{bookShelf.books.rowIndex+1}
+                </h:column>
 
-            <h:outputText value="Titel"/>
-            <h:inputText value="#{book.name}"/>
+                <h:column>
+                    <f:facet name="header">Autor</f:facet>
+                    #{onebook.author}
+                </h:column>
 
-            <h:outputText value="Erscheinungsdatum"/>
-            <h:inputText value="#{book.publishDate}"/>
+                <h:column>
+                    <f:facet name="header">Titel</f:facet>
+                    #{onebook.name}
+                </h:column>
 
-            <h:outputText value="Sprache"/>
-            <h:selectOneListbox value="#{book.language}">
-                <f:selectItems value="#{book.languages}"></f:selectItems>
-                <f:valueChangeListener
-                        type="de.jsfkurs.buchverwaltung.jsfbeans.LanguageValueChangeListener"></f:valueChangeListener>
-            </h:selectOneListbox>
+                <h:column>
+                    <f:facet name="header">Erscheinungsdatum</f:facet>
+                    #{onebook.publishDate}
+                </h:column>
 
-            <h:outputText value="Preis"/>
-            <h:inputText value="#{book.price}"/>
+                <h:column>
+                    <f:facet name="header">Sprache</f:facet>
+                    #{onebook.language}
+                </h:column>
 
-            <h:outputText value="Abteilungen, die benachrichtigt werden"/>
-            <h:selectManyListbox value="#{book.emailAddresses}" valueChangeListener="#{book.emailAddressChanged}">
-                <f:selectItem itemValue="abteilung1@mycompany.de" itemLabel="Abteilung 1"/>
-                <f:selectItem itemValue="abteilung2@mycompany.de" itemLabel="Abteilung 2"/>
-                <f:ajax event="valueChange" listener="#{book.emailAddressChangedAjax}" render="sm"></f:ajax>
-            </h:selectManyListbox>
+                <h:column>
+                    <f:facet name="header">Preis</f:facet>
+                    #{onebook.price}
+                </h:column>
 
-        </h:panelGrid>
-
-        <h:outputText value="#{book.specialMessage}" id="sm"/> <br/>
-
-        <h:commandButton value="Abspeichern" action="#{book.save}" actionListener="#{book.saveListener}"/>
-    </h:form>
-</f:view>
-</body>
+                <h:column>
+                    <f:facet name="header">Aktionen</f:facet>
+                    XXX
+                </h:column>
+            </h:dataTable>
+        </f:view>
+    </ui:define>
+</ui:composition>
 </html>
