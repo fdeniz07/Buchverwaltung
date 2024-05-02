@@ -1,0 +1,43 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background-color: white;
+}
+
+#header {
+	background-color: LawnGreen;
+	font-size: 30px;
+	text-align: center;
+}
+
+#content {
+	float: left;
+	width: 100%;
+	padding: 5px;
+}
+
+#footer {
+	clear: both;
+	background-color: LawnGreen;
+	text-align: center;
+	font-weight: bold;
+}
+
+.bookTable {
+	border-collapse: collapse;
+}
+
+.bookHeader {
+	text-align: center;
+	background-color: LawnGreen;
+	padding: 5px;
+}
+
+.bookTableOddRow {
+	background-color: LightGray;
+}
+
+.bookTableEvenRow {
+	background-color: white;
+}
