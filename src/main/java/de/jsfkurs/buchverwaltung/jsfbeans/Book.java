@@ -6,6 +6,7 @@ import jakarta.faces.event.AjaxBehaviorEvent;
 import jakarta.faces.event.ValueChangeEvent;
 import jakarta.inject.Named;
 
+import java.util.Date;
 import java.util.LinkedHashMap;
 
 @Named(value = "book")
@@ -16,9 +17,9 @@ public class Book {
 
     private String name;
 
-    private String publishDate;
+    private Date publishDate;
 
-    private String price;
+    private double price;
 
     private String [] emailAddresses;
 
@@ -36,7 +37,7 @@ public class Book {
 
     public String save () {
         // TODO: Abspeichern
-        return "index";
+        return "create";
     }
 
     public void saveListener (ActionEvent e)
@@ -96,19 +97,19 @@ public class Book {
         this.name = name;
     }
 
-    public String getPublishDate() {
+    public Date getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(String publishDate) {
+    public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

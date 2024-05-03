@@ -9,6 +9,7 @@ import jakarta.inject.Named;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 @Named(value = "bookShelf")
 @SessionScoped
@@ -23,24 +24,24 @@ public class BookShelf implements Serializable{
                book1.setAuthor("Johann Wolfgang von Goethe");
                book1.setName("Faust");
                book1.setLanguage("de");
-               book1.setPublishDate("19.01.1829");
-               book1.setPrice("5.00");
+               book1.setPublishDate(new Date(1829-1900,1,19));
+               book1.setPrice(5.00);
                books.add(book1);
 	
                Book book2 = new Book();
                book2.setAuthor("William Shakespeare");
                book2.setName("Romeo und Julia");
                book2.setLanguage("en");
-               book2.setPublishDate("1597");
-               book2.setPrice("8.49");
+               book2.setPublishDate(new Date(1597-1900,1,1));
+               book2.setPrice(8.49);
                books.add(book2);
 
                Book book3 = new Book();
                book3.setAuthor("Stephen King");
                book3.setName("Es - It");
                book3.setLanguage("en");
-               book3.setPublishDate("1986");
-               book3.setPrice("14.99");
+               book3.setPublishDate(new Date(1986-1900,1,1));
+               book3.setPrice(14.99);
                books.add(book3);
            };
 
