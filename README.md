@@ -2,8 +2,8 @@
 ## Book Management System Example
 
 ## Action, Listener, Lifecycle
-## Facelets, Templatesystem from JSF
+## Facelets, Template-System from JSF
 ## Globalization and localization
-## Converting and Validating
+## Conversions and Validations
 ## Navigation
 ## Context and Dependency Injection (CDI)
