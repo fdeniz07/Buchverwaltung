@@ -11,19 +11,19 @@
 
 <h:head>
     <meta http-equiv="Content Type" content="text/html; charset=ISO-8859-1"/>
-    <title><ui:insert name="pagetitle">Buchverwaltung</ui:insert></title>
+    <title><ui:insert name="pagetitle">#{msg['application.title']}</ui:insert></title>
     <link href="#{request.contextPath}/resources/css/style.css" type="text/css" rel="stylesheet"/>
 </h:head>
 <h:body>
     <f:view>
         <div id="header">
-            <ui:insert name="pagetitle">Buchverwaltung</ui:insert>
+            <ui:insert name="pagetitle">#{msg['application.title']}</ui:insert>
         </div>
         <div id="content">
             <ui:insert name="content"> TODO </ui:insert>
         </div>
         <div id="footer">
-            <ui:insert name="footer">JSF Demoapplikation
+            <ui:insert name="footer">#{msg['application.footer']}
                 <h:outputLabel value="#{session.lastAccessedTime}">
                     <f:convertDateTime timeStyle="full" type="time"/>
                 </h:outputLabel>

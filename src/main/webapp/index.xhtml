@@ -11,43 +11,43 @@
 
 <ui:composition template="/WEB-INF/templates/standarttemplate.xhtml">
 
-    <ui:define name="pagetitle">Buchliste</ui:define>
+    <ui:define name="pagetitle">#{msg['index.title']}</ui:define>
     <ui:define name="content">
         <f:view>
             <h:dataTable value="#{bookShelf.books}" var="onebook" styleClass="bookTable" headerClass="bookHeader"
                          rowClasses="bookTableOddRow,bookTableEvenRow">
                 <h:column>
-                    <f:facet name="header">No.</f:facet>
+                    <f:facet name="header">#{msg['index.no']}</f:facet>
                     #{bookShelf.books.rowIndex+1}
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">Autor</f:facet>
+                    <f:facet name="header">#{msg['index.author']}</f:facet>
                     #{onebook.author}
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">Titel</f:facet>
+                    <f:facet name="header">#{msg['index.name']}</f:facet>
                     #{onebook.name}
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">Erscheinungsdatum</f:facet>
+                    <f:facet name="header">#{msg['index.publishDate']}</f:facet>
                     #{onebook.publishDate}
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">Sprache</f:facet>
+                    <f:facet name="header">#{msg['index.language']}</f:facet>
                     #{onebook.language}
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">Preis</f:facet>
+                    <f:facet name="header">#{msg['index.price']}</f:facet>
                     #{onebook.price}
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">Aktionen</f:facet>
+                    <f:facet name="header">#{msg['index.actions']}</f:facet>
                     XXX
                 </h:column>
             </h:dataTable>
