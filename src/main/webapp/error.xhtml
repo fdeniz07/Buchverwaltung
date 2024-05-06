@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:body>
+    <h1>Ein Fehler ist aufgetreten</h1>
+
+    <h2>Fehler</h2>
+    #{requestScope['fehler']}
+
+    <h2>Informationen</h2>
+    
+    <ui:repeat value="#{requestScope['stack']}" var="item">
+        #{item.className} - #{item.methodName} - #{item.fileName} (#{item.lineNumber})<br/>
+    </ui:repeat>
+
+</h:body>
+</html>

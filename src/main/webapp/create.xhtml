@@ -15,26 +15,27 @@
             <h:form>
                 <h:panelGrid columns="3">
                     <h:outputText value="#{msg['create.author']}"/>
-                    <h:inputText id="bookAuthor" value="#{book.author}" required="true"
+                    <h:inputText id="bookAuthor" value="#{bookShelf.inEdit.author}" required="true"
                                  requiredMessage="Bitte Autor des Buches angeben!">
                         <f:validator validatorId="vornameNachnameValidator"/>
                     </h:inputText>
                     <h:message for="bookAuthor" styleClass="errorMessage"/>
 
                     <h:outputText value="#{msg['create.name']}"/>
-                    <h:inputText id="bookTitle" value="#{book.name}" validatorMessage="Der Titel des Buches muss mindestens 5 und maximal 50 Zeichen beinhalten!">
+                    <h:inputText id="bookTitle" value="#{bookShelf.inEdit.name}"
+                                 validatorMessage="Der Titel des Buches muss mindestens 5 und maximal 50 Zeichen beinhalten!">
                         <f:validateLength minimum="5" maximum="50"/>
                     </h:inputText>
                     <h:message for="bookTitle" styleClass="errorMessage"/>
 
                     <h:outputText value="#{msg['create.publishDate']}"/>
-                    <h:inputText id="bookpublishDate" value="#{book.publishDate}">
+                    <h:inputText id="bookpublishDate" value="#{bookShelf.inEdit.publishDate}">
                         <f:convertDateTime pattern="dd-MM-yyyy"/>
                     </h:inputText>
                     <h:message for="bookpublishDate" styleClass="errorMessage"/>
 
                     <h:outputText value="#{msg['create.language']}"/>
-                    <h:selectOneListbox id="bookLanguage" value="#{book.language}">
+                    <h:selectOneListbox id="bookLanguage" value="#{bookShelf.inEdit.language}">
                         <f:selectItems value="#{book.languages}"></f:selectItems>
                         <f:valueChangeListener
                                 type="de.jsfkurs.buchverwaltung.jsfbeans.LanguageValueChangeListener"></f:valueChangeListener>
@@ -42,24 +43,24 @@
                     <h:message for="bookLanguage" styleClass="errorMessage"/>
 
                     <h:outputText value="#{msg['create.price']}"/>
-                    <h:inputText id="bookPrice" value="#{book.price}"
+                    <h:inputText id="bookPrice" value="#{bookShelf.inEdit.price}"
                                  converterMessage="Der Preis muss mit EUR 9,90 z.B. angegeben werden.">
                         <f:convertNumber currencySymbol="EUR" type="currency"/>
                     </h:inputText>
                     <h:message for="bookPrice" styleClass="errorMessage"/>
 
                     <h:outputText value="#{msg['create.departments']}"/>
-                    <h:selectManyListbox id="bookEmailaddresses" value="#{book.emailAddresses}"
-                                         valueChangeListener="#{book.emailAddressChanged}">
+                    <h:selectManyListbox id="bookEmailaddresses" value="#{bookShelf.inEdit.emailAddresses}"
+                                         valueChangeListener="#{bookShelf.inEdit.emailAddressChanged}">
                         <f:selectItem itemValue="abteilung1@mycompany.de" itemLabel="Abteilung 1"/>
                         <f:selectItem itemValue="abteilung2@mycompany.de" itemLabel="Abteilung 2"/>
-                        <f:ajax event="valueChange" listener="#{book.emailAddressChangedAjax}" render="sm"></f:ajax>
+                        <f:ajax event="valueChange" listener="#{bookShelf.inEdit.emailAddressChangedAjax}"
+                                render="sm"></f:ajax>
                     </h:selectManyListbox>
                     <h:message for="bookEmailaddresses" styleClass="errorMessage"/>
                 </h:panelGrid>
-                <h:outputText value="#{book.specialMessage}" id="sm"/> <br/>
-                <h:commandButton value="#{msg['create.save']}" action="#{book.save}"
-                                 actionListener="#{book.saveListener}"/>
+                <h:outputText value="#{bookShelf.inEdit.specialMessage}" id="sm"/> <br/>
+                <h:commandButton value="#{msg['create.save']}" action="#{bookShelf.saveBook}"/>
             </h:form>
         </f:view>
     </ui:define>

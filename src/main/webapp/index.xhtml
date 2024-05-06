@@ -48,9 +48,20 @@
 
                 <h:column>
                     <f:facet name="header">#{msg['index.actions']}</f:facet>
-                    XXX
+
+                    <h:form>
+                        <h:commandButton value="Editieren" action="#{bookShelf.prepareBookEdit(onebook)}"/>
+                    </h:form>
+
+                    <h:form>
+                        <h:commandButton value="Löschen" action="#{bookShelf.deleteBook(onebook)}"/>
+                    </h:form>
                 </h:column>
             </h:dataTable>
+
+            <h:form>
+                <h:commandButton value="Buch erfassen" action="#{bookShelf.prepareNewBook}"/>
+            </h:form>
         </f:view>
     </ui:define>
 </ui:composition>
