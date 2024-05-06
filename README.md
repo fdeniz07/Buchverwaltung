@@ -5,5 +5,5 @@
 ## Facelets, Template-System from JSF
 ## Globalization and localization
 ## Conversions and Validations
-## Navigation
+## Navigations and GlobalExceptions Handling
 ## Context and Dependency Injection (CDI)
